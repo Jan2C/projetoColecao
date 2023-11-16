@@ -8,12 +8,19 @@ Foi feito dessa forma pois não consegui encontrar outro modo para enviar todos 
 Ficaria então desse jeito com a pasta projetoColecao aberta:
 
 .idea
+
 .mvn
+
 src
+
 target
+
 .gitignore
+
 HELP
+
 mvnw
+
 pom.xml
 
 Ressalvas: Não esqueça dos servidores, na minha máquina utiliza-se o XAMPP.
