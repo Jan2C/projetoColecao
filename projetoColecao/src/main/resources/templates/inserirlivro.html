@@ -1,0 +1,107 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Inserir um novo livro</title>
+
+    <!-- Adicione os links para os arquivos CSS do Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark .navbar.navbar-default.navbar-static-top bg-dark">
+    <!-- Logo/marca principal da barra -->
+    <a class="navbar-brand mb-0 h1 ms-5 me-5" href="#">Projeto</a>
+
+    <!-- Opções da barra -->
+    <div class="collapse navbar-collapse" id="navbarOpcoes">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/home}">Home </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/listalivro}">Livros </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/listaescritor}">Escritores </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Conteúdo principal -->
+<div class="container mt-3">
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Adicionar livros</h6>
+        </div>
+        <div class="card-body">
+
+            <form th:action="@{/inserirlivro}" th:method="post" th:object="${ListaLivroDto}" method="post">
+
+                <!-- Campo e-mail -->
+
+                <div class="form-floating mb-4">
+                    <input type="text" id="nome" name="nome" th:field="*{nome}" class="form-control form-control-lg" />
+                    <label for="nome">Nome</label>
+                </div>
+
+                <div class="form-floating mb-4">
+                    <input type="text" id="genero" name="genero" th:field="*{genero}" class="form-control form-control-lg" />
+                    <label for="genero">Gênero</label>
+                </div>
+
+                <div class="form-floating mb-4">
+                    <input type="text" id="editora" name="editora" th:field="*{editora}" class="form-control form-control-lg" />
+                    <label for="editora">Editora</label>
+                </div>
+
+                <div class="form-floating mb-4">
+                    <input type="text" id="escritorId" name="escritorId" th:field="*{escritorId}" class="form-control form-control-lg" />
+                    <label for="escritorId">Escritor</label>
+                </div>
+
+                <div class="form-floating mb-4">
+                    <input type="number" id="paginas" name="paginas" th:field="*{paginas}" class="form-control form-control-lg" />
+                    <label for="paginas">Páginas</label>
+                </div>
+
+                <div class="form-floating mb-4">
+                    <input type="text" id="ano" name="ano" th:field="*{ano}" class="form-control form-control-lg" />
+                    <label for="ano">Ano de Compra</label>
+                </div>
+
+                <div class="pt-1 mb-4">
+                    <button class="btn btn-primary btn-lg btn-block col-12" type="submit">Inserir</button>
+                </div>
+
+                <div class="pt-1 mb-4">
+                    <button class="btn btn-primary btn-lg btn-block col-12"> <a class="nav-link" th:href="@{/listalivro}">Fechar</a></button>
+                </div>
+
+            </form>
+
+            <div th:if="${param.sucesso}" class="alert alert-info" role="alert">
+                <span class="mensagem">Livro adicionado realizado com sucesso!</span>
+            </div>
+
+            <!-- url passando parametro -> "localhost:8080/login?erro"  -->
+            <div th:if="${param.erro}" class="alert alert-danger" role="alert">
+                <span class="mensagem">Erro ao adicionar livro!</span>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Fim conteúdo principal -->
+
+<!-- Rodapé -->
+<footer class="container">
+    <p>Projeto 2022-2023</p>
+</footer>
+<!-- Fim Rodapé -->
+
+</body>
+</html>
